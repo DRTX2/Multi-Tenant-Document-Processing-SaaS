@@ -1,10 +1,12 @@
 using System.Linq.Expressions;
 using AspNetProject.Domain.Models;
 
-namespace AspNetProject.Domain.Ports;
+namespace AspNetProject.Domain.Ports.Out;
 
 /// <summary>
-/// Puerto de salida genérico para operaciones CRUD
+/// Puerto de SALIDA genérico (Outbound Port) para operaciones CRUD
+/// Este puerto es implementado por la capa de Infrastructure (EfRepository)
+/// y usado por la capa de Application
 /// Este patrón evita duplicación de código entre repositorios
 /// </summary>
 /// <typeparam name="TEntity">Tipo de entidad</typeparam>

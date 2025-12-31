@@ -1,295 +1,355 @@
 # 📚 Índice de Documentación - AspNetProject
 
-Bienvenido a la documentación completa del proyecto AspNetProject. Esta guía te ayudará a navegar por toda la documentación disponible.
+## 🎯 Guías de Inicio Rápido
+
+| Documento | Descripción | Cuándo Leerlo |
+|-----------|-------------|---------------|
+| [QUICK_START.md](QUICK_START.md) | ⚡ Inicio en 3 pasos | **PRIMERO** - Para empezar rápido |
+| [README.md](README.md) | 📖 Guía principal del proyecto | Después del Quick Start |
+| [RESUMEN_FINAL.md](RESUMEN_FINAL.md) | 📋 Resumen ejecutivo completo | Para entender qué se implementó |
 
 ---
 
-## 🎯 Por Dónde Empezar
+## 🏗️ Arquitectura Hexagonal
 
-### Si eres nuevo en el proyecto:
+### Conceptos Fundamentales
 
-1. **[QUICK_START.md](QUICK_START.md)** ⚡ - Inicio rápido en 3 pasos
-2. **[RESUMEN_FINAL.md](RESUMEN_FINAL.md)** 📋 - Resumen ejecutivo completo
-3. **[README.md](README.md)** 📖 - Guía principal del proyecto
+| Documento | Descripción | Nivel |
+|-----------|-------------|-------|
+| [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) | 📁 **Estructura completa con In/Out** | **ESENCIAL** ⭐ |
+| [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) | 🔌 **Puertos In/Out explicados** | **ESENCIAL** ⭐ |
+| [Adapters/README.md](AspNetProject/Adapters/README.md) | 🔌 Adaptadores In/Out explicados | Básico |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 🏗️ Diagramas y principios SOLID | Intermedio |
 
-### Si quieres entender la arquitectura:
+### Refactorización Reciente
 
-1. **[ARCHITECTURE.md](ARCHITECTURE.md)** 🏗️ - Diagramas y principios SOLID
-2. **[README.md](README.md)** 📖 - Explicación de capas hexagonales
-
-### Si quieres trabajar con la base de datos:
-
-1. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** 🗄️ - Guía completa de Entity Framework Core
-2. **[EF_CORE_SUMMARY.md](EF_CORE_SUMMARY.md)** 📊 - Resumen de implementación
-
-### Si quieres extender el proyecto:
-
-1. **[EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)** 🔧 - Ejemplos de extensiones
-2. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** 🗄️ - Cómo agregar entidades
+| Documento | Descripción | Cuándo Leerlo |
+|-----------|-------------|---------------|
+| [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) | ✅ **Resumen de cambios a In/Out** | **Para entender los cambios** ⭐ |
+| [BEFORE_AFTER_COMPARISON.md](BEFORE_AFTER_COMPARISON.md) | 🔄 Comparación visual antes/después | Para ver las mejoras |
 
 ---
 
-## 📖 Documentación Completa
+## 🔧 Guías de Extensión
 
-### 1. [QUICK_START.md](QUICK_START.md) ⚡
-
-**Inicio Rápido**
-
-- ✅ Requisitos previos
-- ✅ Inicio en 3 pasos
-- ✅ Agregar nueva entidad en 5 minutos
-- ✅ Comandos útiles
-- ✅ Ejemplos rápidos
-- ✅ Solución de problemas comunes
-
-**Ideal para**: Empezar a usar el proyecto inmediatamente
+| Documento | Descripción | Cuándo Usarlo |
+|-----------|-------------|---------------|
+| [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md) | 🔧 Cómo extender el proyecto | Al agregar funcionalidad |
+| [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md) | 🚀 Agregar GraphQL, gRPC, CLI, etc. | Al agregar nuevos adaptadores |
 
 ---
 
-### 2. [RESUMEN_FINAL.md](RESUMEN_FINAL.md) 📋
+## 🗄️ Base de Datos y Entity Framework
 
-**Resumen Ejecutivo**
-
-- ✅ Problemas resueltos
-- ✅ Tecnologías agregadas
-- ✅ Estructura del proyecto
-- ✅ Características principales
-- ✅ Métricas de mejora
-- ✅ Cómo agregar entidades
-- ✅ Comandos frecuentes
-
-**Ideal para**: Entender qué se hizo y por qué
+| Documento | Descripción | Nivel |
+|-----------|-------------|-------|
+| [DATABASE_GUIDE.md](DATABASE_GUIDE.md) | 🗄️ Guía completa de EF Core | Intermedio |
+| [EF_CORE_SUMMARY.md](EF_CORE_SUMMARY.md) | 📊 Resumen de EF Core | Básico |
 
 ---
 
-### 3. [README.md](README.md) 📖
-
-**Guía Principal del Proyecto**
-
-- ✅ Introducción a arquitectura hexagonal
-- ✅ Capas del proyecto
-- ✅ Flujo de dependencias
-- ✅ Componentes principales
-- ✅ Configuración de base de datos
-- ✅ Ejecución del proyecto
-- ✅ Endpoints disponibles
-- ✅ Inyección de dependencias
-- ✅ Testing
-- ✅ Beneficios de la arquitectura
-
-**Ideal para**: Comprensión general del proyecto
-
----
-
-### 4. [ARCHITECTURE.md](ARCHITECTURE.md) 🏗️
-
-**Diagramas y Principios**
-
-- ✅ Diagrama de capas (Mermaid)
-- ✅ Flujo de peticiones (secuencia)
-- ✅ Principios SOLID aplicados
-- ✅ Ventajas de la arquitectura
-- ✅ Ejemplos de extensión
-- ✅ Comparación con otras arquitecturas
-
-**Ideal para**: Entender la arquitectura en profundidad
-
----
-
-### 5. [DATABASE_GUIDE.md](DATABASE_GUIDE.md) 🗄️
-
-**Guía Completa de Entity Framework Core**
-
-- ✅ Arquitectura de datos
-- ✅ Patrón repository genérico
-- ✅ Configuración inicial
-- ✅ Crear nuevas entidades (paso a paso)
-- ✅ Migraciones
-- ✅ Uso de repositorios
-- ✅ Mejores prácticas
-- ✅ Docker Compose para PostgreSQL
-- ✅ Ejemplos completos
-
-**Ideal para**: Trabajar con la base de datos
-
----
-
-### 6. [EF_CORE_SUMMARY.md](EF_CORE_SUMMARY.md) 📊
-
-**Resumen de Entity Framework Core**
-
-- ✅ Implementación completada
-- ✅ Paquetes instalados
-- ✅ Archivos creados
-- ✅ Características principales
-- ✅ Comparación antes/después
-- ✅ Comandos útiles
-- ✅ Ventajas de la implementación
-
-**Ideal para**: Referencia rápida de EF Core
-
----
-
-### 7. [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md) 🔧
-
-**Cómo Extender el Proyecto**
-
-- ✅ Agregar nueva entidad (completo)
-- ✅ Agregar persistencia con EF Core
-- ✅ Agregar autenticación JWT
-- ✅ Agregar validaciones con FluentValidation
-- ✅ Agregar tests unitarios
-- ✅ Agregar GraphQL
-- ✅ Ejemplos de código completos
-
-**Ideal para**: Agregar nuevas funcionalidades
-
----
-
-### 8. [CHANGELOG.md](CHANGELOG.md) 📝
-
-**Historial de Cambios**
-
-- ✅ Errores corregidos
-- ✅ Arquitectura implementada
-- ✅ Configuración de OpenAPI/Swagger
-- ✅ Compatibilidad con .NET 10
-- ✅ Estructura final del proyecto
-- ✅ Métricas de calidad
-
-**Ideal para**: Ver qué se cambió en el proyecto
-
----
-
-## 🗺️ Mapa de Navegación
-
-```
-EMPEZAR AQUÍ
-    │
-    ├─→ QUICK_START.md ⚡
-    │       │
-    │       ├─→ Iniciar proyecto
-    │       └─→ Probar API
-    │
-    ├─→ RESUMEN_FINAL.md 📋
-    │       │
-    │       └─→ Entender qué se hizo
-    │
-    └─→ README.md 📖
-            │
-            ├─→ Arquitectura hexagonal
-            │       │
-            │       └─→ ARCHITECTURE.md 🏗️
-            │
-            ├─→ Base de datos
-            │       │
-            │       ├─→ DATABASE_GUIDE.md 🗄️
-            │       └─→ EF_CORE_SUMMARY.md 📊
-            │
-            └─→ Extender proyecto
-                    │
-                    └─→ EXTENSION_GUIDE.md 🔧
-```
-
----
-
-## 📂 Archivos de Configuración
-
-| Archivo | Descripción |
-|---------|-------------|
-| `appsettings.json` | Configuración de la aplicación |
-| `docker-compose.yml` | PostgreSQL + pgAdmin |
-| `.env.example` | Ejemplo de variables de entorno |
-| `.gitignore` | Archivos ignorados por Git |
-| `AspNetProject.csproj` | Configuración del proyecto .NET |
-
----
-
-## 🎓 Rutas de Aprendizaje
+## 📖 Documentación por Tema
 
 ### Para Principiantes
 
-1. **[QUICK_START.md](QUICK_START.md)** - Ejecutar el proyecto
-2. **[README.md](README.md)** - Entender la estructura
-3. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** - Agregar tu primera entidad
-4. **[EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)** - Agregar funcionalidades
+1. **Empezar** → [QUICK_START.md](QUICK_START.md)
+2. **Entender la estructura** → [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) ⭐
+3. **Entender In/Out** → [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) ⭐
+4. **Ver la arquitectura** → [ARCHITECTURE.md](ARCHITECTURE.md)
 
-### Para Desarrolladores Intermedios
+### Para Desarrolladores
 
-1. **[ARCHITECTURE.md](ARCHITECTURE.md)** - Entender principios SOLID
-2. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** - Dominar EF Core
-3. **[EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)** - Implementar features avanzadas
-4. **[EF_CORE_SUMMARY.md](EF_CORE_SUMMARY.md)** - Optimizar queries
+1. **Agregar una entidad** → [QUICK_START.md](QUICK_START.md#-agregar-una-nueva-entidad-5-minutos)
+2. **Extender funcionalidad** → [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)
+3. **Agregar adaptadores** → [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md)
+4. **Trabajar con EF Core** → [DATABASE_GUIDE.md](DATABASE_GUIDE.md)
 
 ### Para Arquitectos
 
-1. **[ARCHITECTURE.md](ARCHITECTURE.md)** - Analizar arquitectura hexagonal
-2. **[README.md](README.md)** - Evaluar separación de capas
-3. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** - Revisar patrón repository
-4. **[EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)** - Planificar escalabilidad
+1. **Entender la refactorización** → [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) ⭐
+2. **Comparar antes/después** → [BEFORE_AFTER_COMPARISON.md](BEFORE_AFTER_COMPARISON.md)
+3. **Principios SOLID** → [ARCHITECTURE.md](ARCHITECTURE.md#principios-solid-aplicados)
+4. **Estructura completa** → [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 
 ---
 
-## 🔍 Búsqueda Rápida
+## 🎓 Conceptos Clave Explicados
 
-### ¿Cómo hago...?
+### ¿Qué es la Arquitectura Hexagonal?
 
-| Tarea | Documento | Sección |
-|-------|-----------|---------|
-| Iniciar el proyecto | QUICK_START.md | Inicio en 3 pasos |
-| Agregar una entidad | DATABASE_GUIDE.md | Crear una Nueva Entidad |
-| Crear una migración | QUICK_START.md | Comandos Útiles → Migraciones |
-| Usar el repositorio | DATABASE_GUIDE.md | Uso de Repositorios |
-| Agregar JWT | EXTENSION_GUIDE.md | Agregar Autenticación JWT |
-| Agregar validaciones | EXTENSION_GUIDE.md | Agregar Validaciones |
-| Crear tests | EXTENSION_GUIDE.md | Agregar Tests Unitarios |
-| Entender la arquitectura | ARCHITECTURE.md | Todo el documento |
-| Ver cambios realizados | CHANGELOG.md | Todo el documento |
+Una arquitectura que separa el **núcleo de negocio** (Domain + Application) de los **detalles técnicos** (Adapters + Infrastructure).
+
+**Leer:** [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
 
-## 💡 Consejos
+### ¿Qué son In y Out? ⭐⭐⭐
 
-### Para Lectura Rápida
+**In (Entrada/Inbound):** Todo lo que **ENTRA** a tu aplicación
+- **Adaptadores In:** REST, GraphQL, CLI → Reciben peticiones
+- **Puertos In:** Interfaces de casos de uso → Definen qué puede hacer la app
 
-1. **Empieza con [QUICK_START.md](QUICK_START.md)** - 5 minutos
-2. **Lee [RESUMEN_FINAL.md](RESUMEN_FINAL.md)** - 10 minutos
-3. **Consulta [DATABASE_GUIDE.md](DATABASE_GUIDE.md)** cuando necesites agregar entidades
+**Out (Salida/Outbound):** Todo lo que **SALE** de tu aplicación
+- **Adaptadores Out:** Repositories, APIs → Implementan dependencias
+- **Puertos Out:** Interfaces de dependencias → Definen qué necesita la app
 
-### Para Estudio Profundo
+**Leer:** [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) ← **¡Empieza aquí!** ⭐
 
-1. **Lee [README.md](README.md)** completo - 30 minutos
-2. **Estudia [ARCHITECTURE.md](ARCHITECTURE.md)** - 45 minutos
-3. **Practica con [DATABASE_GUIDE.md](DATABASE_GUIDE.md)** - 1 hora
-4. **Implementa ejemplos de [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)** - 2 horas
+---
+
+### ¿Por qué In/Out en lugar de Primary/Secondary?
+
+**In/Out es más claro:**
+- ✅ **In** = **IN**gresa a la aplicación (entrada)
+- ✅ **Out** = **OUT**sourcing de dependencias (salida)
+- ✅ Auto-explicativo, no requiere memorizar términos
+
+**Primary/Secondary es confuso:**
+- ❓ ¿Qué significa "Primary"?
+- ❓ ¿Por qué "Secondary"?
+- ❓ Requiere explicación adicional
+
+**Leer:** [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md#-por-qué-inout-en-lugar-de-primarysecondary)
+
+---
+
+### ¿Cómo funciona el Repository Pattern?
+
+Usamos un `IRepository<TEntity, TId>` genérico que funciona con cualquier entidad.
+
+**Leer:** [DATABASE_GUIDE.md](DATABASE_GUIDE.md#-repository-pattern-genérico)
+
+---
+
+## 🗂️ Estructura del Proyecto
+
+```
+AspNetProject/
+├── Adapters/                    🔌 Adaptadores
+│   ├── In/                      🔵 Entrada (REST, GraphQL, gRPC)
+│   └── Out/                     🟢 Salida (opcional)
+│
+├── Domain/                      💎 Núcleo (Core)
+│   ├── Models/                  Entidades
+│   └── Ports/                   Interfaces (Puertos)
+│       ├── In/                  🔵 Puertos de Entrada
+│       └── Out/                 🟢 Puertos de Salida
+│
+├── Application/                 📋 Casos de Uso
+│   └── Services/                Lógica de negocio
+│
+└── Infrastructure/              🔧 Infraestructura
+    ├── Data/                    DbContext, Configurations
+    ├── Providers/               Servicios externos
+    └── Repositories/            Acceso a datos
+```
+
+**Leer:** [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
+
+---
+
+## 🚀 Casos de Uso Comunes
+
+### Quiero agregar una nueva entidad
+
+1. Crear entidad en `Domain/Models/`
+2. Crear configuración en `Infrastructure/Data/Configurations/`
+3. Agregar DbSet en `ApplicationDbContext`
+4. Crear migración
+5. Usar `IRepository<TEntity, TId>` en servicios
+
+**Guía:** [QUICK_START.md](QUICK_START.md#-agregar-una-nueva-entidad-5-minutos)
+
+---
+
+### Quiero agregar GraphQL
+
+1. Instalar `HotChocolate.AspNetCore`
+2. Crear Query en `Adapters/In/GraphQL/Queries/`
+3. Registrar en `Program.cs`
+4. Probar en `/graphql`
+
+**Guía:** [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md#1-agregar-graphql-adaptador-primario)
+
+---
+
+### Quiero agregar gRPC
+
+1. Instalar `Grpc.AspNetCore`
+2. Crear `.proto` en `Adapters/In/Grpc/Protos/`
+3. Crear servicio en `Adapters/In/Grpc/Services/`
+4. Registrar en `Program.cs`
+
+**Guía:** [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md#2-agregar-grpc-adaptador-primario)
+
+---
+
+### Quiero enviar emails
+
+1. Definir `IEmailSender` en `Domain/Ports/Out/`
+2. Implementar en `Infrastructure/EmailSenders/`
+3. Registrar en `Program.cs`
+4. Usar en Application layer
+
+**Guía:** [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md#4-agregar-email-sender-adaptador-secundario)
+
+---
+
+## 📊 Diagramas
+
+### Flujo de una Petición
+
+```
+Cliente HTTP  →  REST Controller  →  Service  →  Provider  →  Respuesta
+   (In)           (Adapters/In)    (Application) (Infrastructure)
+```
+
+**Ver diagrama completo:** [ARCHITECTURE.md](ARCHITECTURE.md#flujo-de-una-petición)
+
+---
+
+### Capas de la Arquitectura
+
+```
+┌─────────────────────────────────────┐
+│  Adapters/In (Inbound)              │  🔵 Entrada
+├─────────────────────────────────────┤
+│  Application (Use Cases)            │  📋 Lógica de negocio
+├─────────────────────────────────────┤
+│  Domain (Core)                      │  💎 Núcleo puro
+│  ├── Ports/In/                      │  🔵 Casos de uso
+│  └── Ports/Out/                     │  🟢 Dependencias
+├─────────────────────────────────────┤
+│  Infrastructure (Outbound)          │  🟢 Salida
+└─────────────────────────────────────┘
+```
+
+**Ver diagrama completo:** [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md#flujo-de-dependencias)
+
+---
+
+## 🔗 Enlaces Rápidos
+
+| Necesito... | Ir a... |
+|-------------|---------|
+| Empezar rápido | [QUICK_START.md](QUICK_START.md) |
+| Entender In/Out | [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) ⭐⭐⭐ |
+| Ver la estructura | [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) ⭐ |
+| Agregar funcionalidad | [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md) |
+| Agregar adaptadores | [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md) |
+| Trabajar con BD | [DATABASE_GUIDE.md](DATABASE_GUIDE.md) |
+| Ver cambios recientes | [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) ⭐ |
+
+---
+
+## 🎯 Ruta de Aprendizaje Recomendada
+
+### Nivel 1: Básico (30 minutos)
+
+1. ✅ [QUICK_START.md](QUICK_START.md) - Ejecutar el proyecto
+2. ✅ [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) - Entender la estructura ⭐
+3. ✅ [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) - **Concepto In/Out** ⭐⭐⭐
+
+### Nivel 2: Intermedio (1 hora)
+
+4. ✅ [Adapters/README.md](AspNetProject/Adapters/README.md) - Adaptadores In/Out
+5. ✅ [ARCHITECTURE.md](ARCHITECTURE.md) - Principios SOLID
+6. ✅ [DATABASE_GUIDE.md](DATABASE_GUIDE.md) - EF Core
+7. ✅ [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md) - Extender el proyecto
+
+### Nivel 3: Avanzado (2 horas)
+
+8. ✅ [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md) - GraphQL, gRPC, CLI
+9. ✅ [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) - Decisiones arquitectónicas ⭐
+10. ✅ [BEFORE_AFTER_COMPARISON.md](BEFORE_AFTER_COMPARISON.md) - Evolución del proyecto
+
+---
+
+## ❓ FAQ - Preguntas Frecuentes
+
+### ¿Qué significa "In"?
+
+**Respuesta:** **In** = **IN**bound = **Entrada**. Todo lo que entra a tu aplicación (REST, GraphQL, CLI).
+
+**Leer:** [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md#-puertos-de-entrada-in)
+
+---
+
+### ¿Qué significa "Out"?
+
+**Respuesta:** **Out** = **OUT**bound = **Salida**. Todo lo que sale de tu aplicación (Database, Email, APIs).
+
+**Leer:** [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md#-puertos-de-salida-out)
+
+---
+
+### ¿Dónde van los puertos de entrada?
+
+**Respuesta:** En `Domain/Ports/In/`. Son interfaces de casos de uso implementadas por `Application/Services/`.
+
+**Leer:** [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md#-puertos-de-entrada-in)
+
+---
+
+### ¿Dónde van los puertos de salida?
+
+**Respuesta:** En `Domain/Ports/Out/`. Son interfaces de dependencias implementadas por `Infrastructure/`.
+
+**Leer:** [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md#-puertos-de-salida-out)
+
+---
+
+### ¿Cómo agrego una nueva entidad?
+
+**Respuesta:** 5 pasos: Entidad → Configuración → DbSet → Migración → Usar.
+
+**Leer:** [QUICK_START.md](QUICK_START.md#-agregar-una-nueva-entidad-5-minutos)
+
+---
+
+### ¿Cómo agrego GraphQL?
+
+**Respuesta:** Instalar HotChocolate → Crear Query en `Adapters/In/GraphQL/` → Registrar → Probar.
+
+**Leer:** [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md#1-agregar-graphql-adaptador-primario)
 
 ---
 
 ## 📞 Soporte
 
-Si tienes dudas sobre:
+Si tienes dudas:
 
-- **Inicio rápido** → [QUICK_START.md](QUICK_START.md)
-- **Arquitectura** → [ARCHITECTURE.md](ARCHITECTURE.md)
-- **Base de datos** → [DATABASE_GUIDE.md](DATABASE_GUIDE.md)
-- **Extensiones** → [EXTENSION_GUIDE.md](EXTENSION_GUIDE.md)
-- **Resumen general** → [RESUMEN_FINAL.md](RESUMEN_FINAL.md)
-
----
-
-## ✅ Checklist de Documentación
-
-- ✅ Guía de inicio rápido
-- ✅ Documentación de arquitectura
-- ✅ Guía de base de datos
-- ✅ Ejemplos de extensión
-- ✅ Resumen ejecutivo
-- ✅ Historial de cambios
-- ✅ Índice de navegación
-- ✅ Comandos de referencia
+1. **Busca en este índice** el tema relacionado
+2. **Lee el documento recomendado**
+3. **Revisa los ejemplos de código** en cada guía
+4. **Consulta los diagramas** en ARCHITECTURE.md
 
 ---
 
-**¡Toda la documentación está lista para usar! 📚**
+## 🎓 Recursos Externos
 
-Empieza con [QUICK_START.md](QUICK_START.md) para poner el proyecto en marcha en minutos.
+- [Hexagonal Architecture (Alistair Cockburn)](https://alistair.cockburn.us/hexagonal-architecture/)
+- [Clean Architecture (Robert C. Martin)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Ports and Adapters Pattern](https://herbertograca.com/2017/09/14/ports-adapters-architecture/)
+- [Entity Framework Core Docs](https://learn.microsoft.com/en-us/ef/core/)
+
+---
+
+## 📝 Notas de la Última Actualización
+
+**Fecha:** 2025-12-31
+
+**Cambios principales:**
+- ✅ Refactorización completa a nomenclatura **In/Out**
+- ✅ Separación de puertos en `Domain/Ports/In/` y `Domain/Ports/Out/`
+- ✅ Adaptadores en `Adapters/In/` y `Adapters/Out/`
+- ✅ Documentación completa de In/Out
+- ✅ Guías actualizadas con nueva estructura
+
+**Ver detalles:** [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md)
+
+---
+
+**¡Bienvenido a AspNetProject!** 🚀
+
+Comienza por [QUICK_START.md](QUICK_START.md) y luego lee [Domain/Ports/README.md](AspNetProject/Domain/Ports/README.md) para entender el concepto clave de **In/Out**.

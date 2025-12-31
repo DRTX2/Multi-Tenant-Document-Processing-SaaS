@@ -1,5 +1,6 @@
 using AspNetProject.Domain.Models;
-using AspNetProject.Domain.Ports;
+using AspNetProject.Domain.Ports.In;
+using AspNetProject.Domain.Ports.Out;
 
 namespace AspNetProject.Application.Services;
 

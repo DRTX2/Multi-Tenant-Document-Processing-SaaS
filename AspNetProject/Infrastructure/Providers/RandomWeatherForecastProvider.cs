@@ -1,5 +1,5 @@
 using AspNetProject.Domain.Models;
-using AspNetProject.Domain.Ports;
+using AspNetProject.Domain.Ports.Out;
 
 namespace AspNetProject.Infrastructure.Providers;
 

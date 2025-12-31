@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using AspNetProject.Domain.Ports;
+using AspNetProject.Domain.Ports.In;
 using AspNetProject.Domain.Models;
 
-namespace AspNetProject.Api.Controllers;
+namespace AspNetProject.Adapters.In.Rest.Controllers;
 
 /// <summary>
 /// Controlador REST para pronósticos del tiempo
-/// Esta clase pertenece a la capa de Adaptadores (Infrastructure/API)
+/// Esta clase pertenece a la capa de Adaptadores de ENTRADA (Inbound Adapters)
+/// Adaptador de entrada que expone la funcionalidad de la aplicación vía HTTP/REST
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
@@ -40,4 +41,3 @@ public class WeatherForecastController : ControllerBase
         }
     }
 }
-

@@ -1,5 +1,6 @@
 using AspNetProject.Application.Services;
-using AspNetProject.Domain.Ports;
+using AspNetProject.Domain.Ports.In;
+using AspNetProject.Domain.Ports.Out;
 using AspNetProject.Infrastructure.Providers;
 using AspNetProject.Infrastructure.Data;
 using AspNetProject.Infrastructure.Repositories;

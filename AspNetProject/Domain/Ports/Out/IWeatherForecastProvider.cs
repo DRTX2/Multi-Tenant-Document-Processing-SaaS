@@ -1,10 +1,11 @@
 using AspNetProject.Domain.Models;
 
-namespace AspNetProject.Domain.Ports;
+namespace AspNetProject.Domain.Ports.Out;
 
 /// <summary>
-/// Puerto de salida (Output Port) - Define el contrato para obtener datos de pronósticos
-/// Las implementaciones de esta interfaz pertenecen a la capa de Infraestructura
+/// Puerto de SALIDA (Outbound Port) - Define el contrato para obtener datos de pronósticos
+/// Este puerto es implementado por la capa de Infrastructure (adaptadores de salida)
+/// y usado por la capa de Application
 /// </summary>
 public interface IWeatherForecastProvider
 {
@@ -15,5 +16,3 @@ public interface IWeatherForecastProvider
     /// <returns>Colección de pronósticos</returns>
     IEnumerable<WeatherForecast> GetForecasts(int days);
 }
-
-

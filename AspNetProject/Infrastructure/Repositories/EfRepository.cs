@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using AspNetProject.Domain.Models;
-using AspNetProject.Domain.Ports;
+using AspNetProject.Domain.Ports.Out;
 using AspNetProject.Infrastructure.Data;
 
 namespace AspNetProject.Infrastructure.Repositories;

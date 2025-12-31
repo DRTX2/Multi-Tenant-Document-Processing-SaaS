@@ -2,11 +2,11 @@
 
 ```mermaid
 graph TB
-    subgraph "API Layer (Adaptadores de Entrada)"
-        Controller[WeatherForecastController<br/>GET /api/weatherforecast]
+    subgraph "Adapters/Primary (Adaptadores de Entrada - Driving)"
+        Controller[WeatherForecastController<br/>GET /api/weatherforecast<br/>REST API]
     end
     
-    subgraph "Domain Layer (Núcleo)"
+    subgraph "Domain Layer (Núcleo - Core)"
         IService[IWeatherForecastService<br/>Puerto de Entrada]
         IProvider[IWeatherForecastProvider<br/>Puerto de Salida]
         Model[WeatherForecast<br/>Entidad de Dominio]
@@ -16,7 +16,7 @@ graph TB
         Service[WeatherForecastService<br/>Implementa lógica de negocio]
     end
     
-    subgraph "Infrastructure Layer (Adaptadores de Salida)"
+    subgraph "Infrastructure Layer (Adaptadores de Salida - Driven)"
         Provider[RandomWeatherForecastProvider<br/>Genera datos aleatorios]
     end
     
