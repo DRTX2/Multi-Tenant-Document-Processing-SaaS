@@ -6,5 +6,5 @@ namespace AspNetProject.Domain.Models;
 /// <typeparam name="TId">Tipo del identificador de la entidad</typeparam>
 public interface IEntity<TId>
 {
-    TId Id { get; set; }
+    TId Id { get;  }
 }

@@ -30,6 +30,41 @@
 
 ---
 
+## 🏛️ Domain-Driven Design (DDD)
+
+### Guías de DDD
+
+| Documento | Descripción | Nivel |
+|-----------|-------------|-------|
+| [DDD_GUIDE.md](DDD_GUIDE.md) | 🏛️ **Guía completa de DDD** | **ESENCIAL** ⭐⭐⭐ |
+| [DDD_PRACTICAL_EXAMPLE.md](DDD_PRACTICAL_EXAMPLE.md) | 🚀 **Ejemplo práctico: Refactorizar WeatherForecast** | **RECOMENDADO** ⭐⭐ |
+| [DDD_COMPARISON.md](DDD_COMPARISON.md) | 🔄 Comparación: Modelo Anémico vs DDD | Intermedio |
+
+### ¿Qué es DDD?
+
+**Domain-Driven Design** es un enfoque que pone el **dominio del negocio** en el centro de la aplicación.
+
+**Conceptos clave:**
+- ✅ **Value Objects**: Objetos inmutables sin identidad (Email, Money, Temperature)
+- ✅ **Entities**: Objetos con identidad única (Customer, Order, WeatherForecast)
+- ✅ **Aggregates**: Grupos de entidades con una raíz que garantiza consistencia
+- ✅ **Domain Events**: Eventos que representan algo que sucedió en el dominio
+- ✅ **Specifications**: Encapsulan reglas de negocio reutilizables
+- ✅ **Ubiquitous Language**: Vocabulario compartido entre desarrolladores y negocio
+
+**Leer:** [DDD_GUIDE.md](DDD_GUIDE.md)
+
+### DDD + Arquitectura Hexagonal
+
+DDD y Arquitectura Hexagonal se complementan perfectamente:
+
+- **Hexagonal** te da la **estructura** para aislar el dominio
+- **DDD** te da las **herramientas** para modelar el dominio
+
+**Ejemplo práctico:** [DDD_PRACTICAL_EXAMPLE.md](DDD_PRACTICAL_EXAMPLE.md)
+
+---
+
 ## 🔧 Guías de Extensión
 
 | Documento | Descripción | Cuándo Usarlo |
@@ -262,6 +297,12 @@ Cliente HTTP  →  REST Controller  →  Service  →  Provider  →  Respuesta
 8. ✅ [ADDING_ADAPTERS_GUIDE.md](ADDING_ADAPTERS_GUIDE.md) - GraphQL, gRPC, CLI
 9. ✅ [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) - Decisiones arquitectónicas ⭐
 10. ✅ [BEFORE_AFTER_COMPARISON.md](BEFORE_AFTER_COMPARISON.md) - Evolución del proyecto
+
+### Nivel 4: Domain-Driven Design (3 horas) 🏛️
+
+11. ✅ [DDD_GUIDE.md](DDD_GUIDE.md) - **Guía completa de DDD** ⭐⭐⭐
+12. ✅ [DDD_COMPARISON.md](DDD_COMPARISON.md) - Modelo Anémico vs DDD
+13. ✅ [DDD_PRACTICAL_EXAMPLE.md](DDD_PRACTICAL_EXAMPLE.md) - **Refactorizar con DDD** ⭐⭐
 
 ---
 

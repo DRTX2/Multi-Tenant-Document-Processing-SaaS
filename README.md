@@ -5,12 +5,38 @@ Este proyecto implementa una API REST en **ASP.NET Core 10.0** siguiendo los pri
 ## 🎯 Características
 
 - ✅ **Arquitectura Hexagonal** completa con separación de capas
+- ✅ **Domain-Driven Design (DDD)** con guías completas
 - ✅ **Entity Framework Core 10** con PostgreSQL
 - ✅ **Repositorio Genérico** para evitar duplicación de código
 - ✅ **Swagger/OpenAPI** para documentación interactiva
 - ✅ **Docker Compose** para desarrollo local
 - ✅ **Convenciones snake_case** para PostgreSQL
 - ✅ **Inyección de Dependencias** configurada correctamente
+
+## 🏛️ Domain-Driven Design (DDD)
+
+Este proyecto incluye **documentación completa** sobre cómo implementar **Domain-Driven Design (DDD)**:
+
+### 📚 Guías de DDD
+
+| Documento | Descripción |
+|-----------|-------------|
+| [DDD_RESUMEN.md](DDD_RESUMEN.md) | 🎉 **Resumen ejecutivo en español** - Empieza aquí ⭐⭐⭐ |
+| [DDD_GUIDE.md](DDD_GUIDE.md) | 🏛️ Guía completa de DDD con todos los building blocks |
+| [DDD_PRACTICAL_EXAMPLE.md](DDD_PRACTICAL_EXAMPLE.md) | 🚀 Ejemplo paso a paso para refactorizar WeatherForecast |
+| [DDD_COMPARISON.md](DDD_COMPARISON.md) | 🔄 Comparación: Modelo Anémico vs DDD |
+| [DDD_QUICK_REFERENCE.md](DDD_QUICK_REFERENCE.md) | 📋 Referencia rápida con checklists |
+
+### Building Blocks de DDD
+
+- **Value Objects** - Objetos inmutables (Temperature, Email, Money)
+- **Entities** - Objetos con identidad (WeatherForecast, Customer, Order)
+- **Aggregates** - Grupos de entidades con consistencia garantizada
+- **Domain Events** - Eventos del dominio (OrderCreated, WeatherAlert)
+- **Specifications** - Reglas de negocio reutilizables
+- **Domain Services** - Lógica que no pertenece a una entidad
+
+**Lee primero:** [DDD_RESUMEN.md](DDD_RESUMEN.md) para un resumen completo en español.
 
 ## 🏗️ Arquitectura Hexagonal
 

@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using AspNetProject.Domain.Models;
 using AspNetProject.Domain.Ports.Out;
@@ -7,11 +6,12 @@ using AspNetProject.Infrastructure.Data;
 namespace AspNetProject.Infrastructure.Repositories;
 
 /// <summary>
-/// Implementación genérica del repositorio usando Entity Framework Core
-/// Esta clase base evita duplicación de código entre repositorios
+/// Implementación genérica del repositorio usando Entity Framework Core.
+/// Solo maneja operaciones CRUD básicas.
+/// Para consultas complejas, usa Query Services específicos.
 /// </summary>
-/// <typeparam name="TEntity">Tipo de entidad</typeparam>
-/// <typeparam name="TId">Tipo del identificador</typeparam>
+/// <typeparam name="TEntity">Tipo de entidad del dominio</typeparam>
+/// <typeparam name="TId">Tipo del identificador de la entidad</typeparam>
 public class EfRepository<TEntity, TId> : IRepository<TEntity, TId> 
     where TEntity : class, IEntity<TId>
 {
@@ -29,25 +29,6 @@ public class EfRepository<TEntity, TId> : IRepository<TEntity, TId>
     public virtual async Task<TEntity?> GetByIdAsync(TId id, CancellationToken cancellationToken = default)
     {
         return await DbSet.FindAsync(new object[] { id! }, cancellationToken);
-    }
-
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
-    {
-        return await DbSet.ToListAsync(cancellationToken);
-    }
-
-    public virtual async Task<IEnumerable<TEntity>> FindAsync(
-        Expression<Func<TEntity, bool>> predicate, 
-        CancellationToken cancellationToken = default)
-    {
-        return await DbSet.Where(predicate).ToListAsync(cancellationToken);
-    }
-
-    public virtual async Task<TEntity?> FirstOrDefaultAsync(
-        Expression<Func<TEntity, bool>> predicate, 
-        CancellationToken cancellationToken = default)
-    {
-        return await DbSet.FirstOrDefaultAsync(predicate, cancellationToken);
     }
 
     public virtual async Task<bool> ExistsAsync(TId id, CancellationToken cancellationToken = default)
