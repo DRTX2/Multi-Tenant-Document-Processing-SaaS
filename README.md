@@ -6,12 +6,56 @@ Este proyecto implementa una API REST en **ASP.NET Core 10.0** siguiendo los pri
 
 - ✅ **Arquitectura Hexagonal** completa con separación de capas
 - ✅ **Domain-Driven Design (DDD)** con guías completas
+- ✅ **Paginación Profesional** con PageRequest y PagedResult (estilo Spring Boot)
 - ✅ **Entity Framework Core 10** con PostgreSQL
 - ✅ **Repositorio Genérico** para evitar duplicación de código
+- ✅ **Query Services** para consultas complejas con paginación
 - ✅ **Swagger/OpenAPI** para documentación interactiva
 - ✅ **Docker Compose** para desarrollo local
 - ✅ **Convenciones snake_case** para PostgreSQL
 - ✅ **Inyección de Dependencias** configurada correctamente
+
+## 📄 Paginación Profesional
+
+Este proyecto implementa **paginación profesional nivel senior** similar a Spring Data de Spring Boot:
+
+### 📚 Guías de Paginación
+
+| Documento | Descripción |
+|-----------|-------------|
+| [PAGINATION_SUMMARY.md](Docs/PAGINATION_SUMMARY.md) | 🎯 **Resumen ejecutivo** - Empieza aquí ⭐⭐⭐ |
+| [PAGINATION_GUIDE.md](Docs/PAGINATION_GUIDE.md) | 📖 Guía completa: Spring Boot vs .NET |
+| [PAGINATION_DIAGRAMS.md](Docs/PAGINATION_DIAGRAMS.md) | 📊 Diagramas visuales y flujos |
+| [PAGINATION_FRONTEND_EXAMPLES.md](Docs/PAGINATION_FRONTEND_EXAMPLES.md) | 💻 Ejemplos React, Vue, TypeScript |
+| [PAGINATION_TESTING.md](Docs/PAGINATION_TESTING.md) | 🧪 Tests unitarios e integración |
+
+### Características de Paginación
+
+- **PageRequest** - Similar a `Pageable` de Spring Boot (0-indexed)
+- **PagedResult<T>** - Similar a `Page<T>` de Spring Data
+- **Query Services** - Separación de consultas complejas del repositorio genérico
+- **Ordenamiento dinámico** - Por cualquier campo con dirección ASC/DESC
+- **Límites de seguridad** - Protección contra cargas masivas de datos
+- **Criterios de búsqueda** - Filtros específicos del dominio
+
+**Ejemplo de uso:**
+```csharp
+// Crear solicitud de paginación
+var pageRequest = PageRequest.Of(0, 20, "Name", true);
+
+// Crear criterios de búsqueda
+var criteria = new CitySearchCriteria { Country = "Colombia" };
+
+// Ejecutar búsqueda paginada
+var result = await cityQueryService.SearchAsync(criteria, pageRequest);
+
+// Resultado incluye metadatos
+Console.WriteLine($"Total: {result.TotalCount}");
+Console.WriteLine($"Pages: {result.TotalPages}");
+Console.WriteLine($"Has next: {result.HasNextPage}");
+```
+
+**Lee primero:** [PAGINATION_SUMMARY.md](Docs/PAGINATION_SUMMARY.md) para entender por qué NO hay `GetAll()` en el repositorio.
 
 ## 🏛️ Domain-Driven Design (DDD)
 

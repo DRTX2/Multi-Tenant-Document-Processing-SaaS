@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AspNetProject.Domain.Models;
 using AspNetProject.Domain.Ports.Out;
+using AspNetProject.Domain.ValueObjects;
 using AspNetProject.Infrastructure.Data;
 
 namespace AspNetProject.Infrastructure.Persistence;
@@ -64,15 +65,9 @@ public class CityQueryService : ICityQueryService
 
     public async Task<PagedResult<City>> SearchAsync(
         CitySearchCriteria criteria,
-        int pageNumber = 1,
-        int pageSize = 20,
+        PageRequest pageRequest,
         CancellationToken cancellationToken = default)
     {
-        // Validación de parámetros
-        if (pageNumber < 1) pageNumber = 1;
-        if (pageSize < 1) pageSize = 20;
-        if (pageSize > 100) pageSize = 100; // Límite máximo de seguridad
-
         var query = _context.Cities.AsQueryable();
 
         // Aplicar filtros dinámicamente según los criterios
@@ -92,19 +87,19 @@ public class CityQueryService : ICityQueryService
         var totalCount = await query.CountAsync(cancellationToken);
 
         // Aplicar ordenamiento dinámico
-        query = ApplyOrdering(query, criteria.OrderBy, criteria.OrderAscending);
+        query = ApplyOrdering(query, pageRequest.SortBy, pageRequest.SortAscending);
 
-        // Aplicar paginación
+        // Aplicar paginación usando PageRequest
         var items = await query
-            .Skip((pageNumber - 1) * pageSize)
-            .Take(pageSize)
+            .Skip(pageRequest.Skip)
+            .Take(pageRequest.PageSize)
             .ToListAsync(cancellationToken);
 
         return new PagedResult<City>
         {
             Items = items,
-            PageNumber = pageNumber,
-            PageSize = pageSize,
+            PageNumber = pageRequest.PageNumber,
+            PageSize = pageRequest.PageSize,
             TotalCount = totalCount
         };
     }

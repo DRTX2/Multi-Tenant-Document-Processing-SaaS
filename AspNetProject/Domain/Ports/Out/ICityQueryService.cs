@@ -1,11 +1,14 @@
 using AspNetProject.Domain.Models;
-using AspNetProject.Domain.Ports.Out;
+using AspNetProject.Domain.ValueObjects;
 
 namespace AspNetProject.Domain.Ports.Out;
 
 /// <summary>
 /// Puerto de SALIDA para consultas específicas de City.
 /// Ejemplo de Query Service con paginación profesional.
+/// 
+/// PATRÓN: Query Services separan las consultas complejas del repositorio genérico.
+/// Esto permite optimizaciones específicas del dominio sin contaminar IRepository.
 /// </summary>
 public interface ICityQueryService
 {
@@ -35,11 +38,21 @@ public interface ICityQueryService
     /// <summary>
     /// Búsqueda avanzada con múltiples criterios y paginación.
     /// Este es el patrón recomendado para consultas complejas en producción.
+    /// 
+    /// EJEMPLO DE USO:
+    /// <code>
+    /// var criteria = new CitySearchCriteria 
+    /// { 
+    ///     Country = "Colombia",
+    ///     NameContains = "Bog"
+    /// };
+    /// var pageRequest = PageRequest.Of(0, 20, "Name", true);
+    /// var result = await cityQueryService.SearchAsync(criteria, pageRequest);
+    /// </code>
     /// </summary>
     Task<PagedResult<City>> SearchAsync(
         CitySearchCriteria criteria,
-        int pageNumber = 1,
-        int pageSize = 20,
+        PageRequest pageRequest,
         CancellationToken cancellationToken = default);
     
     /// <summary>
@@ -60,59 +73,8 @@ public interface ICityQueryService
 }
 
 /// <summary>
-/// Value Object: Resultado paginado genérico.
-/// Encapsula datos de paginación de forma inmutable.
-/// </summary>
-public record PagedResult<T>
-{
-    /// <summary>
-    /// Elementos de la página actual.
-    /// </summary>
-    public required IEnumerable<T> Items { get; init; }
-    
-    /// <summary>
-    /// Número de página actual (1-indexed).
-    /// </summary>
-    public required int PageNumber { get; init; }
-    
-    /// <summary>
-    /// Tamaño de página.
-    /// </summary>
-    public required int PageSize { get; init; }
-    
-    /// <summary>
-    /// Total de elementos en todas las páginas.
-    /// </summary>
-    public required int TotalCount { get; init; }
-    
-    /// <summary>
-    /// Total de páginas.
-    /// </summary>
-    public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
-    
-    /// <summary>
-    /// Indica si hay página anterior.
-    /// </summary>
-    public bool HasPreviousPage => PageNumber > 1;
-    
-    /// <summary>
-    /// Indica si hay página siguiente.
-    /// </summary>
-    public bool HasNextPage => PageNumber < TotalPages;
-    
-    /// <summary>
-    /// Número de la página anterior (si existe).
-    /// </summary>
-    public int? PreviousPageNumber => HasPreviousPage ? PageNumber - 1 : null;
-    
-    /// <summary>
-    /// Número de la página siguiente (si existe).
-    /// </summary>
-    public int? NextPageNumber => HasNextPage ? PageNumber + 1 : null;
-}
-
-/// <summary>
 /// Value Object: Criterios de búsqueda para ciudades.
+/// Encapsula los filtros de búsqueda de forma inmutable.
 /// </summary>
 public record CitySearchCriteria
 {
@@ -122,14 +84,9 @@ public record CitySearchCriteria
     public DateTime? CreatedBefore { get; init; }
     
     /// <summary>
-    /// Campo por el cual ordenar los resultados.
+    /// Crea criterios vacíos (sin filtros).
     /// </summary>
-    public string? OrderBy { get; init; }
-    
-    /// <summary>
-    /// Dirección del ordenamiento (true = ascendente, false = descendente).
-    /// </summary>
-    public bool OrderAscending { get; init; } = true;
+    public static CitySearchCriteria Empty() => new();
 }
 
 /// <summary>
