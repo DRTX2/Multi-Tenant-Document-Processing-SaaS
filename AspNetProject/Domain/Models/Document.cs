@@ -1,10 +1,10 @@
+using AspNetProject.Domain.Events;
 using AspNetProject.Domain.ValueObjects;
 
 namespace AspNetProject.Domain.Models;
 
-public class Document : IEntity<Guid>
+public class Document : AggregateRoot<Guid>
 {
-    public Guid Id { get; private set; }
     public Guid TenantId { get; private set; }
     public Guid OwnerUserId { get; private set; }
     
@@ -34,12 +34,35 @@ public class Document : IEntity<Guid>
         Status = DocumentStatus.UPLOADED;
         _versions = new List<DocumentVersion>();
         CreatedAt = DateTime.UtcNow;
+        
+        AddDomainEvent(new DocumentUploaded(Id, TenantId, Metadata.FileName));
     }
 
     public void AddVersion(DocumentVersion version)
     {
         if (version == null) throw new ArgumentNullException(nameof(version));
         _versions.Add(version);
+    }
+
+    public void UpdateMetadata(DocumentMetadata newMetadata)
+    {
+        Metadata = newMetadata ?? throw new ArgumentNullException(nameof(newMetadata));
+    }
+
+    public void SoftDelete()
+    {
+        // Add domain rule: Can only delete if not already processing hard tasks? 
+        // For now, simple state change.
+        Status = DocumentStatus.DELETED;
+    }
+
+    public void Restore()
+    {
+        if (Status != DocumentStatus.DELETED)
+        {
+            throw new InvalidOperationException("Document is not deleted.");
+        }
+        Status = DocumentStatus.UPLOADED; // Reset to uploaded or previous state
     }
 
     public void UpdateStatus(DocumentStatus newStatus)

@@ -4,7 +4,7 @@ public enum DocumentStatus
 {
     UPLOADED,
     QUEUED,
-    PROCESING,
+    PROCESSING,
     AVAILABLE,
     DELETED
 }

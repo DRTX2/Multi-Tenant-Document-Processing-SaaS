@@ -1,10 +1,10 @@
+using AspNetProject.Domain.Events;
 using AspNetProject.Domain.ValueObjects;
 
 namespace AspNetProject.Domain.Models;
 
-public class Tenant : IEntity<Guid>
+public class Tenant : AggregateRoot<Guid>
 {
-    public Guid Id { get; private set; }
     public string Name { get; private set; }
     public TenantStatus Status { get; private set; }
     public TenantConfiguration Configuration { get; private set; }
