@@ -6,9 +6,30 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <AllowMissingPrunePackageData>true</AllowMissingPrunePackageData>
+        <RootNamespace>AspNetProject.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Remove="Domain\**" />
+        <Compile Remove="Application\**" />
+        <Compile Remove="Infrastructure\**" />
+        <Compile Remove="SchemaVerifier\**" />
+        <EmbeddedResource Remove="Domain\**" />
+        <EmbeddedResource Remove="Application\**" />
+        <EmbeddedResource Remove="Infrastructure\**" />
+        <None Remove="Domain\**" />
+        <None Remove="Application\**" />
+        <None Remove="Infrastructure\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="Domain\AspNetProject.Domain.csproj" />
+        <ProjectReference Include="Application\AspNetProject.Application.csproj" />
+        <ProjectReference Include="Infrastructure\AspNetProject.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
@@ -21,6 +42,13 @@
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <!-- Exclude the sub-project files from being picked up as unrelated items -->
+    <ItemGroup>
+        <None Include="Domain\AspNetProject.Domain.csproj" />
+        <None Include="Application\AspNetProject.Application.csproj" />
+        <None Include="Infrastructure\AspNetProject.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
