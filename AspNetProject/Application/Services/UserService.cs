@@ -9,12 +9,19 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
-    // In a real scenario, inject a separate IPasswordHasher service
-    
-    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
+    private readonly IPasswordHasher _passwordHasher;
+    private readonly ITokenGenerator _tokenGenerator;
+
+    public UserService(
+        IUserRepository userRepository, 
+        IUnitOfWork unitOfWork,
+        IPasswordHasher passwordHasher,
+        ITokenGenerator tokenGenerator)
     {
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
+        _passwordHasher = passwordHasher;
+        _tokenGenerator = tokenGenerator;
     }
 
     public async Task<TenantUser> GetUserByEmailAsync(string email, Guid tenantId, CancellationToken cancellationToken = default)
@@ -43,13 +50,7 @@ public class UserService : IUserService
             throw new InvalidOperationException($"User with email {email} already exists in this tenant.");
         }
 
-        // TODO: Hash password properly using a secure hasher service
-        // For MVP, we'll store pseudo-hashed or defer this to Infrastructure implementation detail (bad practice in domain)
-        // Correct way: Inject IPasswordHasher into UserService. 
-        // string hashedPassword = _passwordHasher.Hash(password);
-        
-        // Mock hashing for code completeness:
-        string hashedPassword = $"hashed_{password}"; 
+        string hashedPassword = _passwordHasher.Hash(password);
 
         var user = new TenantUser(tenantId, email, hashedPassword);
         
@@ -90,8 +91,7 @@ public class UserService : IUserService
 
         if (!string.IsNullOrEmpty(password))
         {
-             // Mock hashing
-             string hashedPassword = $"hashed_{password}";
+             string hashedPassword = _passwordHasher.Hash(password);
              user.UpdatePassword(hashedPassword);
         }
 
@@ -158,10 +158,32 @@ public class UserService : IUserService
     public async Task DeleteUserAsync(Guid userId, CancellationToken cancellationToken = default)
     {
         var user = await GetUserByIdAsync(userId, cancellationToken);
-        
-        // Hard delete or Soft delete? Domain model usually dictates.
-        // Assuming repository DeleteAsync handles it (EF Core Remove -> Physical delete).
         await _userRepository.DeleteAsync(user, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<string> LoginAsync(string email, string password, Guid tenantId, CancellationToken cancellationToken = default)
+    {
+        var user = await _userRepository.GetByEmailAsync(email, tenantId, cancellationToken);
+        
+        if (user == null)
+        {
+             // To prevent enumeration attacks, one might genericize this, but purely inside service we return specific errors or handle logic.
+             // Domain service logic: Invalid credentials.
+             throw new UnauthorizedAccessException("Invalid credentials");
+        }
+        
+        if (user.Status != UserStatus.ACTIVE)
+        {
+             throw new UnauthorizedAccessException("User is not active.");
+        }
+
+        bool validPassword = _passwordHasher.Verify(password, user.PasswordHash);
+        if (!validPassword)
+        {
+             throw new UnauthorizedAccessException("Invalid credentials");
+        }
+
+        return _tokenGenerator.GenerateToken(user);
     }
 }

@@ -72,7 +72,51 @@ builder.Services.AddScoped<IFileStorage, MockFileStorage>();
 builder.Services.AddScoped<IDomainEventDispatcher, MockEventDispatcher>();
 
 // Registrar Workers (Background Services)
+using AspNetProject.Infrastructure.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+// ...
+
 builder.Services.AddHostedService<AspNetProject.Infrastructure.BackgroundJobs.DocumentProcessingWorker>();
+
+// ----- Authentication & Security Configuration -----
+
+// 1. Bind JwtSettings
+var jwtSection = builder.Configuration.GetSection(JwtSettings.SectionName);
+builder.Services.Configure<JwtSettings>(jwtSection);
+var jwtSettings = jwtSection.Get<JwtSettings>() ?? new JwtSettings 
+{ 
+    Secret = "SuperSecretKeyForDevelopmentOnly12345!", 
+    Issuer= "SecureDocs", 
+    Audience="SecureDocsUsers", 
+    ExpiryMinutes=60 
+};
+
+// 2. Register Auth Services
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+builder.Services.AddSingleton<ITokenGenerator, JwtTokenGenerator>();
+
+// 3. Add Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+    };
+});
 
 var app = builder.Build();
 
@@ -93,6 +137,7 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication(); // Must be before Authorization
 app.UseAuthorization();
 
 app.MapControllers();

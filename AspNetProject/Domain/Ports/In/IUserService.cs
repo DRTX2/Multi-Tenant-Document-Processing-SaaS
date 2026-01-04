@@ -130,4 +130,9 @@ public interface IUserService
     /// <param name="cancellationToken">Token de cancelación</param>
     /// <exception cref="KeyNotFoundException">Cuando el usuario no existe</exception>
     Task DeleteUserAsync(Guid userId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Autentica a un usuario y retorna un token JWT.
+    /// </summary>
+    Task<string> LoginAsync(string email, string password, Guid tenantId, CancellationToken cancellationToken = default);
 }
