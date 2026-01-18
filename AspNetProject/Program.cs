@@ -3,9 +3,15 @@ using AspNetProject.Domain.Ports.In;
 using AspNetProject.Domain.Ports.Out;
 using AspNetProject.Infrastructure.Persistence;
 using AspNetProject.Infrastructure.Persistence.Repositories;
+using AspNetProject.Infrastructure.Providers;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
-using AspNetProject.Application.Validators;
+using AspNetProject.Application.Validators.Tenants;
+using AspNetProject.Application.Validators.Users;
+using AspNetProject.Infrastructure.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,12 +78,6 @@ builder.Services.AddScoped<IFileStorage, MockFileStorage>();
 builder.Services.AddScoped<IDomainEventDispatcher, MockEventDispatcher>();
 
 // Registrar Workers (Background Services)
-using AspNetProject.Infrastructure.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
-// ...
 
 builder.Services.AddHostedService<AspNetProject.Infrastructure.BackgroundJobs.DocumentProcessingWorker>();
 
@@ -86,6 +86,7 @@ builder.Services.AddHostedService<AspNetProject.Infrastructure.BackgroundJobs.Do
 // 1. Bind JwtSettings
 var jwtSection = builder.Configuration.GetSection(JwtSettings.SectionName);
 builder.Services.Configure<JwtSettings>(jwtSection);
+// cambiarlo luego.
 var jwtSettings = jwtSection.Get<JwtSettings>() ?? new JwtSettings 
 { 
     Secret = "SuperSecretKeyForDevelopmentOnly12345!", 
@@ -144,29 +145,3 @@ app.MapControllers();
 
 app.Run();
 
-// --- Mocks Definitions (Can be moved to Infrastructure/Providers later) ---
-public class MockFileStorage : IFileStorage
-{
-    public Task<string> UploadAsync(string fileName, Stream content, CancellationToken cancellationToken = default)
-    {
-        // Simulate upload
-        return Task.FromResult($"local-storage/{fileName}");
-    }
-
-    public Task<Stream> DownloadAsync(string fileName, CancellationToken cancellationToken = default)
-    {
-        return Task.FromResult(Stream.Null);
-    }
-}
-
-public class MockEventDispatcher : IDomainEventDispatcher
-{
-    private readonly ILogger<MockEventDispatcher> _logger;
-    public MockEventDispatcher(ILogger<MockEventDispatcher> logger) => _logger = logger;
-
-    public Task DispatchAsync(AspNetProject.Domain.Events.IDomainEvent domainEvent, CancellationToken cancellationToken = default)
-    {
-        _logger.LogInformation("PUBLISHING EVENT: {EventType} occurred at {Date}", domainEvent.GetType().Name, domainEvent.OccurredOn);
-        return Task.CompletedTask;
-    }
-}
